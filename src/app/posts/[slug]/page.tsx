@@ -1,30 +1,36 @@
+Now let's update your `src/app/page.tsx` with this complete code:
+
+```typescript
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
+
+const convertFeedToJSON = (xml: string) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(xml, 'text/xml')
+  const items = doc.querySelectorAll('item')
+  
+  return Array.from(items).map(item => ({
+    title: item.querySelector('title')?.textContent || '',
+    excerpt: item.querySelector('description')?.textContent || '',
+    date: new Date(item.querySelector('pubDate')?.textContent || '').toLocaleDateString(),
+    link: item.querySelector('link')?.textContent || ''
+  }))
+}
 
 export default function Home() {
-  const posts = [
-    {
-      title: "Building with AI",
-      excerpt: "Exploring the intersection of artificial intelligence and entrepreneurship",
-      date: "2024-02-22",
-      readTime: "5 min"
-    },
-    {
-      title: "The Future of Tech Education",
-      excerpt: "How AI is transforming the way we learn and teach",
-      date: "2024-02-20",
-      readTime: "4 min"
-    },
-    {
-      title: "Entrepreneurial Mindset",
-      excerpt: "Key principles for success in the age of artificial intelligence",
-      date: "2024-02-18",
-      readTime: "6 min"
-    }
-  ]
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch('/substack-feed')
+      .then(res => res.text())
+      .then(xml => {
+        const posts = convertFeedToJSON(xml)
+        setPosts(posts)
+      })
+  }, [])
 
   return (
     <main className="min-h-screen bg-white px-6 md:px-12 py-16">
-      {/* Header */}
       <div className="max-w-2xl mx-auto">
         <header className="mb-16">
           <div className="mb-8">
@@ -41,11 +47,11 @@ export default function Home() {
           <p className="text-lg text-gray-600 font-light">Thoughts on AI, entrepreneurship, and innovation</p>
         </header>
 
-        {/* Blog Posts */}
         <section className="space-y-12">
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <article 
-              key={index} 
+              key={post.title}
+              onClick={() => window.location.href = post.link}
               className="group cursor-pointer"
             >
               <h2 className="text-2xl font-light text-gray-900 mb-2 group-hover:text-gray-600 transition-colors duration-200">
@@ -54,14 +60,11 @@ export default function Home() {
               <p className="text-gray-600 mb-3 font-light">{post.excerpt}</p>
               <div className="flex items-center text-sm text-gray-500">
                 <span className="font-light">{post.date}</span>
-                <span className="mx-2 text-gray-300">•</span>
-                <span className="font-light">{post.readTime}</span>
               </div>
             </article>
           ))}
         </section>
 
-        {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-gray-100">
           <p className="text-center text-gray-500 text-sm font-light">
             © 2024 Tom Murphy • AI & Entrepreneurship
@@ -71,3 +74,4 @@ export default function Home() {
     </main>
   )
 }
+```
