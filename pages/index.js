@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
+import Head from 'next/head'; // Import the Head component
 
 function HomePage() {
   const [substackPosts, setSubstackPosts] = useState([]);
@@ -19,7 +13,6 @@ function HomePage() {
       try {
         const response = await fetch('/api/substack'); // Accesses your API route
         const data = await response.json();
-        console.log("Data from /api/substack:", data); // Add this line
         setSubstackPosts(data);
       } catch (error) {
         console.error("Failed to fetch Substack posts:", error);
@@ -31,40 +24,47 @@ function HomePage() {
   }, []);
 
   return (
+    <div>
+      <Head>
+        <title>Tom Suan's Substack Posts</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Container maxWidth="md">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Tom Suan's Substack Posts
-        </Typography>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Title</TableCell>
-                <TableCell align="right">Link</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {substackPosts && substackPosts.map((post) => (
-                <TableRow
-                  key={post.link}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {post.title}
-                  </TableCell>
-                  <TableCell align="right">
-                    <Link href={post.link} target="_blank" rel="noopener noreferrer">
-                      View Post
-                    </Link>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
-    </Container>
+        <Box sx={{ my: 4, fontFamily: 'Inter, sans-serif' }}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            Tom Suan's Substack Posts
+          </Typography>
+          {substackPosts.map((post) => (
+            <Box key={post.link} sx={{ my: 2 }}>
+              <Typography variant="h6" component="h2">
+                {post.title}
+              </Typography>
+              <Link
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: 'block',
+                  mt: 0.5,
+                  color: 'primary.main',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    textDecoration: 'underline',
+                  },
+                }}
+              >
+                View Post
+              </Link>
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </div>
   );
 }
 
