@@ -26,7 +26,7 @@ function HomePage() {
   return (
     <div>
       <Head>
-        <title>Tom Suan's Substack Posts</title>
+        <title>The Home Page</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link
@@ -37,7 +37,7 @@ function HomePage() {
       <Container maxWidth="md">
         <Box sx={{ my: 4, fontFamily: 'Inter, sans-serif' }}>
           <Typography variant="h4" component="h1" gutterBottom>
-            Tom Suan's Substack Posts
+            The Home Page
           </Typography>
           {substackPosts.map((post) => (
             <Box key={post.link} sx={{ my: 2 }}>
