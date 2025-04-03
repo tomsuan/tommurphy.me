@@ -23,7 +23,7 @@ export default function Home({ posts }) {
         justifyItems: 'center' 
       }}>
         {posts.map((post, index) => (
-          <div key={index} style={{ textAlign: 'center' }}>
+          <div key={index} style={{ textAlign: 'center', width: '100%' }}>
             <a href={post.link} target="_blank" rel="noopener noreferrer" 
                style={{ display: 'block', transition: 'transform 0.3s ease, box-shadow 0.3s ease' }}
                onMouseEnter={(e) => {
@@ -34,13 +34,23 @@ export default function Home({ posts }) {
                  e.currentTarget.style.transform = 'scale(1)';
                  e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.05)';
                }}>
-              <Image 
-                src={post.thumbnail} 
-                alt={post.title} 
-                width={250} 
-                height={180} 
-                style={{ borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.05)' }} 
-              />
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '4 / 3', // Enforce a consistent aspect ratio (adjust as needed)
+                backgroundColor: '#f0f0f0', // Optional: Add a background color for empty space
+                borderRadius: '8px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
+              }}>
+                <Image 
+                  src={post.thumbnail} 
+                  alt={post.title} 
+                  layout="fill" // Use fill to make the image scale within the container
+                  objectFit="contain" // Preserve aspect ratio, centering the image
+                  style={{ borderRadius: '8px' }} 
+                />
+              </div>
             </a>
             <a href={post.link} target="_blank" rel="noopener noreferrer" 
                style={{ display: 'block', marginTop: '10px', fontSize: '18px', textDecoration: 'none', color: 'black', transition: 'color 0.3s ease, transform 0.3s ease' }}
