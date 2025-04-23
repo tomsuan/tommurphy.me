@@ -46,9 +46,11 @@ export default function Home({ posts }) {
                 <Image 
                   src={post.thumbnail} 
                   alt={post.title} 
-                  layout="fill" // Use fill to make the image scale within the container
-                  objectFit="contain" // Preserve aspect ratio, centering the image
-                  style={{ borderRadius: '8px' }} 
+                  fill
+                  style={{ 
+                    objectFit: 'contain',
+                    borderRadius: '8px' 
+                  }} 
                 />
               </div>
             </a>
