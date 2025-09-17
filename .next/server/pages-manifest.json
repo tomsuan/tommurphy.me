@@ -1,10 +1,13 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
+  "/admin": "pages/admin.html",
+  "/api/upload": "pages/api/upload.js",
+  "/photos": "pages/photos.html",
+  "/videos": "pages/videos.html",
+  "/articles/[slug]": "pages/articles/[slug].js",
+  "/articles": "pages/articles.js",
   "/": "pages/index.js",
-  "/photos": "pages/photos.js",
-  "/videos": "pages/videos.js",
-  "/admin": "pages/admin.js",
-  "/articles": "pages/articles.js"
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }
