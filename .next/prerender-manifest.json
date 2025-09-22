@@ -1,53 +1,11 @@
 {
   "version": 4,
-  "routes": {
-    "/": {
-      "initialRevalidateSeconds": false,
-      "srcRoute": null,
-      "dataRoute": "/_next/data/4rdmC5R2eLx3Z0GBeIwWC/index.json",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/articles": {
-      "initialRevalidateSeconds": false,
-      "srcRoute": null,
-      "dataRoute": "/_next/data/4rdmC5R2eLx3Z0GBeIwWC/articles.json",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    }
-  },
-  "dynamicRoutes": {
-    "/articles/[slug]": {
-      "routeRegex": "^/articles/([^/]+?)(?:/)?$",
-      "dataRoute": "/_next/data/4rdmC5R2eLx3Z0GBeIwWC/articles/[slug].json",
-      "fallback": false,
-      "dataRouteRegex": "^/_next/data/4rdmC5R2eLx3Z0GBeIwWC/articles/([^/]+?)\\.json$",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    }
-  },
+  "routes": {},
+  "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "d2494aaad80a68b63dc7c308b71319fe",
-    "previewModeSigningKey": "9522e26e2b3c7a8f3d8367c959402ea7fbd7f8a31c052f2b90e22eb671b64d93",
-    "previewModeEncryptionKey": "3ab4674126c92c12261523adde9faa6fee902935107e2e7badb8a05c8b431628"
+    "previewModeId": "87071513506d36cb068fe5f94abadacb",
+    "previewModeSigningKey": "64bc7eba0226bf3adedbc86dba6713bbd32fe1dc10100fbe3d08aeb6308f0357",
+    "previewModeEncryptionKey": "1572e34590ace5491238550e29851bfedd65401055957bb6b8aea28bcc6b8d6e"
   }
 }

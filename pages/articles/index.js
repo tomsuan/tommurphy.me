@@ -30,9 +30,7 @@ export default function Articles({ posts }) {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-        <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
-          Admin
-        </Link>
+        
       </nav>
       <div style={{ marginTop: '40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '30px', justifyItems: 'center' }}>

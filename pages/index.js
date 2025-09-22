@@ -28,9 +28,6 @@ export default function Home({ posts }) {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-        <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
-          Admin
-        </Link>
       </nav>
       <h2 style={{ fontWeight: 600, marginTop: '40px' }}>Recent Notes</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '30px', justifyItems: 'center' }}>

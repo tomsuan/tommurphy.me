@@ -26,9 +26,7 @@ export default function Videos() {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-        <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
-          Admin
-        </Link>
+      
       </nav>
       <p style={{ marginTop: '40px' }}>Video content coming soon.</p>
     </div>

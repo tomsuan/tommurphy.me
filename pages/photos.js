@@ -26,9 +26,7 @@ export default function Photos() {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-        <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
-          Admin
-        </Link>
+       
       </nav>
       <p style={{ marginTop: '40px' }}>Photo gallery coming soon.</p>
     </div>
