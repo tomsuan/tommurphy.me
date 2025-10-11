@@ -4,20 +4,24 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Articles({ posts }) {
   return (
-    <div className={inter.className} style={{ maxWidth: '1200px', margin: 'auto', padding: '20px' }}>
+    <div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px' }}>
       <Head>
         <title>Tom Murphy - Articles</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 style={{ textAlign: 'center', fontWeight: 600 }}>Tom Murphy - Articles</h1>
-      <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '20px',
+          marginTop: '40px',
+          flexWrap: 'wrap',
+        }}>
         <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
           Home
         </Link>
@@ -30,7 +34,9 @@ export default function Articles({ posts }) {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-        
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
+        </Link>
       </nav>
       <div style={{ marginTop: '40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '30px', justifyItems: 'center' }}>
@@ -46,8 +52,7 @@ export default function Articles({ posts }) {
                 color: 'inherit',
               }}
             >
-              <div
-                style={{
+              <div style={{
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
                 }}
@@ -60,8 +65,7 @@ export default function Articles({ posts }) {
                   e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.05)';
                 }}
               >
-                <div
-                  style={{
+                <div style={{
                     position: 'relative',
                     width: '100%',
                     aspectRatio: '4 / 3',

@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Admin() {
   const [status, setStatus] = useState('');
@@ -43,14 +40,21 @@ export default function Admin() {
   };
 
   return (
-    <div className={inter.className} style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
       <Head>
         <title>Admin</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1 style={{ textAlign: 'center', fontWeight: 600 }}>Admin</h1>
-      <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '20px',
+          marginTop: '40px',
+          flexWrap: 'wrap',
+        }}>
         <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
           Home
         </Link>
@@ -62,6 +66,9 @@ export default function Admin() {
         </Link>
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
+        </Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
         </Link>
         <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
           Admin

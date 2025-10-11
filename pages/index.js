@@ -4,13 +4,10 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ posts }) {
   return (
-    <div className={inter.className} style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
+    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
       <Head>
         <title>Tom Murphy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +15,14 @@ export default function Home({ posts }) {
       </Head>
       <h1 style={{ fontWeight: 600 }}>Tom Murphy</h1>
       <p>Welcome to my Notes.</p>
-      <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '20px',
+          marginTop: '40px',
+          flexWrap: 'wrap',
+        }}>
         <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
           Articles
         </Link>
@@ -27,6 +31,9 @@ export default function Home({ posts }) {
         </Link>
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
+        </Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
         </Link>
       </nav>
       <h2 style={{ fontWeight: 600, marginTop: '40px' }}>Recent Notes</h2>
@@ -43,8 +50,7 @@ export default function Home({ posts }) {
               color: 'inherit',
             }}
           >
-            <div
-              style={{
+            <div style={{
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
               }}
@@ -57,8 +63,7 @@ export default function Home({ posts }) {
                 e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.05)';
               }}
             >
-              <div
-                style={{
+              <div style={{
                   position: 'relative',
                   width: '100%',
                   aspectRatio: '4 / 3',

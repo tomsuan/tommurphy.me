@@ -4,9 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import Link from 'next/link';
 
 export default function Article({ content, data }) {
   if (!data || !data.title) {
@@ -14,11 +12,35 @@ export default function Article({ content, data }) {
   }
 
   return (
-    <div className={inter.className} style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
       <Head>
         <title>{data.title}</title>
       </Head>
       <h1 style={{ textAlign: 'center', fontWeight: 600 }}>{data.title}</h1>
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '20px',
+          marginTop: '40px',
+          flexWrap: 'wrap',
+        }}>
+        <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
+          Home
+        </Link>
+        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
+          Articles
+        </Link>
+        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>
+          Videos
+        </Link>
+        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
+          Photos
+        </Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
+        </Link>
+      </nav>
       <div dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
