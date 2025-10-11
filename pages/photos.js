@@ -1,9 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { inter } from '../lib/fonts';
 
 export default function Photos() {
   return (
-    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
+    <div
+      className={inter.className}
+      style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}
+    >
       <Head>
         <title>Photos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

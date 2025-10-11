@@ -4,10 +4,14 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { inter } from '../lib/fonts';
 
 export default function Home({ posts }) {
   return (
-    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
+    <div
+      className={inter.className}
+      style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}
+    >
       <Head>
         <title>Tom Murphy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

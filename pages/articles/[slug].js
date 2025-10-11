@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import Link from 'next/link';
+import { inter } from '../../lib/fonts';
 
 export default function Article({ content, data }) {
   if (!data || !data.title) {
@@ -12,7 +13,10 @@ export default function Article({ content, data }) {
   }
 
   return (
-    <div style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+    <div
+      className={inter.className}
+      style={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}
+    >
       <Head>
         <title>{data.title}</title>
       </Head>
