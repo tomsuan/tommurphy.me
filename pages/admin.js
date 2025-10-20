@@ -63,6 +63,9 @@ export default function Admin() {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
+        </Link>
         <Link href="/admin" style={{ textDecoration: 'none', color: 'black' }}>
           Admin
         </Link>

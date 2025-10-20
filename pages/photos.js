@@ -26,7 +26,9 @@ export default function Photos() {
         <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
           Photos
         </Link>
-       
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
+        </Link>
       </nav>
       <p style={{ marginTop: '40px' }}>Photo gallery coming soon.</p>
     </div>

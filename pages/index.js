@@ -19,15 +19,11 @@ export default function Home({ posts }) {
       <h1 style={{ fontWeight: 600 }}>Tom Murphy</h1>
       <p>Welcome to my Notes.</p>
       <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
-        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
-          Articles
-        </Link>
-        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>
-          Videos
-        </Link>
-        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
-          Photos
-        </Link>
+        <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
+        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>Articles</Link>
+        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>Videos</Link>
+        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>Photos</Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>Downloads</Link>
       </nav>
       <h2 style={{ fontWeight: 600, marginTop: '40px' }}>Recent Notes</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '30px', justifyItems: 'center' }}>
