@@ -1337,16 +1337,6 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
-/***/ "(pages-dir-node)/./node_modules/next/font/google/target.css?{\"path\":\"pages/downloads.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}":
-/*!************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/font/google/target.css?{"path":"pages/downloads.js","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
-  \************************************************************************************************************************************************************/
-/***/ ((module) => {
-
-eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'Inter', 'Inter Fallback'\",\"fontStyle\":\"normal\"},\n\t\"className\": \"__className_f367f3\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHBhZ2VzLWRpci1ub2RlKS8uL25vZGVfbW9kdWxlcy9uZXh0L2ZvbnQvZ29vZ2xlL3RhcmdldC5jc3M/e1wicGF0aFwiOlwicGFnZXMvZG93bmxvYWRzLmpzXCIsXCJpbXBvcnRcIjpcIkludGVyXCIsXCJhcmd1bWVudHNcIjpbe1wic3Vic2V0c1wiOltcImxhdGluXCJdfV0sXCJ2YXJpYWJsZU5hbWVcIjpcImludGVyXCJ9IiwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQSxXQUFXLDhEQUE4RDtBQUN6RTtBQUNBIiwic291cmNlcyI6WyIvd29ya3NwYWNlcy90b21tdXJwaHkubWUvbm9kZV9tb2R1bGVzL25leHQvZm9udC9nb29nbGUvdGFyZ2V0LmNzcz97XCJwYXRoXCI6XCJwYWdlcy9kb3dubG9hZHMuanNcIixcImltcG9ydFwiOlwiSW50ZXJcIixcImFyZ3VtZW50c1wiOlt7XCJzdWJzZXRzXCI6W1wibGF0aW5cIl19XSxcInZhcmlhYmxlTmFtZVwiOlwiaW50ZXJcIn0iXSwic291cmNlc0NvbnRlbnQiOlsiLy8gRXhwb3J0c1xubW9kdWxlLmV4cG9ydHMgPSB7XG5cdFwic3R5bGVcIjoge1wiZm9udEZhbWlseVwiOlwiJ0ludGVyJywgJ0ludGVyIEZhbGxiYWNrJ1wiLFwiZm9udFN0eWxlXCI6XCJub3JtYWxcIn0sXG5cdFwiY2xhc3NOYW1lXCI6IFwiX19jbGFzc05hbWVfZjM2N2YzXCJcbn07XG4iXSwibmFtZXMiOltdLCJpZ25vcmVMaXN0IjpbMF0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(pages-dir-node)/./node_modules/next/font/google/target.css?{\"path\":\"pages/downloads.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}\n");
-
-/***/ }),
-
 /***/ "(pages-dir-node)/./node_modules/next/font/google/target.css?{\"path\":\"pages/index.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}":
 /*!********************************************************************************************************************************************************!*\
   !*** ./node_modules/next/font/google/target.css?{"path":"pages/index.js","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
