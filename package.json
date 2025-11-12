@@ -12,6 +12,7 @@
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
         "@mui/material": "^5.16.14",
+        "@supabase/supabase-js": "^2.80.0",
         "eslint": "8.45.0",
         "eslint-config-next": "13.4.10",
         "framer-motion": "^12.4.7",
