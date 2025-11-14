@@ -1,19 +1,50 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Videos() {
   return (
-    <div className={inter.className} style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}>
+    <div
+      className={inter.className}
+      style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}
+    >
       <Head>
         <title>Videos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
+        strategy="afterInteractive"
+      />
+
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html:
+            "window.dataLayer = window.dataLayer || [];\n" +
+            "function gtag(){dataLayer.push(arguments);}\n" +
+            "gtag('js', new Date());\n" +
+            "gtag('config', 'G-7G6D326KL9');",
+        }}
+      />
+
       <h1 style={{ fontWeight: 600 }}>Videos</h1>
-      <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
+
+      <nav
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '20px',
+          marginTop: '40px',
+          flexWrap: 'wrap',
+        }}
+      >
         <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
           Home
         </Link>
@@ -30,6 +61,7 @@ export default function Videos() {
           Downloads
         </Link>
       </nav>
+
       <p style={{ marginTop: '40px' }}>Video content coming soon.</p>
     </div>
   );

@@ -1,7 +1,8 @@
-// pages/downloads.js
+
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import fs from 'fs';
 import path from 'path';
 import { Inter } from 'next/font/google';
@@ -22,6 +23,24 @@ export default function Downloads({ files }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {/* Google tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-7G6D326KL9');
+          `,
+        }}
+      />
 
       <h1 style={{ textAlign: 'center', fontWeight: 600 }}>Downloads</h1>
 
@@ -140,7 +159,6 @@ export async function getStaticProps() {
   try {
     const dir = path.join(process.cwd(), 'public', 'downloads');
 
-    // Optional metadata file: /public/downloads/_meta.json
     let meta = {};
     try {
       const metaPath = path.join(dir, '_meta.json');
@@ -153,7 +171,6 @@ export async function getStaticProps() {
 
     const entries = fs.readdirSync(dir);
 
-    // Exclude images from the list of downloadable items
     const IMAGE_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg']);
 
     const files = entries
@@ -164,11 +181,10 @@ export async function getStaticProps() {
         if (!stat.isFile()) return null;
 
         const ext = path.extname(name).toLowerCase();
-        if (IMAGE_EXTS.has(ext)) return null; // don't list images as downloads
+        if (IMAGE_EXTS.has(ext)) return null;
 
         const base = name.replace(/\.[^/.]+$/, '');
 
-        // Detect thumbnail with same base name
         let detectedThumb = null;
         for (const imgExt of IMAGE_EXTS) {
           const candidate = path.join(dir, `${base}${imgExt}`);
@@ -200,3 +216,4 @@ export async function getStaticProps() {
     return { props: { files: [] } };
   }
 }
+
