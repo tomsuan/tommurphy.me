@@ -1,18 +1,26 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
+import fs from 'fs';
+import path from 'path';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Photos() {
+export default function Home({ posts }) {
   return (
     <div
       className={inter.className}
-      style={{ maxWidth: '800px', margin: 'auto', padding: '20px', textAlign: 'center' }}
+      style={{
+        maxWidth: '800px',
+        margin: 'auto',
+        padding: '20px',
+        textAlign: 'center',
+      }}
     >
       <Head>
-        <title>Photos</title>
+        <title>Tom Murphy</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -34,7 +42,8 @@ export default function Photos() {
         }}
       />
 
-      <h1 style={{ fontWeight: 600 }}>Photos</h1>
+      <h1 style={{ fontWeight: 600 }}>Tom Murphy</h1>
+      <p>Welcome to my Notes.</p>
 
       <nav
         style={{
@@ -62,7 +71,121 @@ export default function Photos() {
         </Link>
       </nav>
 
-      <p style={{ marginTop: '40px' }}>Photo gallery coming soon.</p>
+      <h2 style={{ fontWeight: 600, marginTop: '40px' }}>Photos</h2>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '30px',
+          justifyItems: 'center',
+        }}
+      >
+        {posts.map((post, index) => (
+          <Link
+            key={index}
+            href={post.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              textAlign: 'center',
+              width: '100%',
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            <div
+              style={{
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow =
+                  '0 8px 16px rgba(0, 0, 0, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow =
+                  '0 4px 8px rgba(0, 0, 0, 0.05)';
+              }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  aspectRatio: '4 / 3',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
+                }}
+              >
+                <Image
+                  src={post.thumbnail}
+                  alt={post.title}
+                  fill
+                  style={{ objectFit: 'contain', borderRadius: '8px' }}
+                />
+              </div>
+
+              <span
+                style={{
+                  display: 'block',
+                  marginTop: '10px',
+                  fontSize: '18px',
+                  color: 'black',
+                  transition: 'color 0.3s ease, transform 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#555';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'black';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                {post.title}
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const photosDir = path.join(process.cwd(), 'public', 'photos');
+  const IMAGE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.gif'];
+
+  let posts = [];
+
+  try {
+    const files = fs.readdirSync(photosDir);
+
+    posts = files
+      .filter((file) =>
+        IMAGE_EXTS.includes(path.extname(file).toLowerCase())
+      )
+      .map((file) => {
+        const fullPath = path.join(photosDir, file);
+        const stat = fs.statSync(fullPath);
+        const base = file.replace(/\.[^/.]+$/, '');
+
+        return {
+          title: base,
+          thumbnail: `/photos/${file}`,
+          link: `/photos/${file}`,
+          date: stat.mtime.getTime(),
+          slug: base,
+        };
+      })
+      .sort((a, b) => b.date - a.date); // newest first
+  } catch (error) {
+    posts = [];
+  }
+
+  return { props: { posts } };
 }

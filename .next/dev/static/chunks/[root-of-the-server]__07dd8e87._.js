@@ -493,6 +493,8 @@ const __TURBOPACK__default__export__ = fontData;
 "use strict";
 
 __turbopack_context__.s([
+    "__N_SSG",
+    ()=>__N_SSG,
     "default",
     ()=>Videos
 ]);
@@ -506,7 +508,8 @@ var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$i
 ;
 ;
 ;
-function Videos() {
+var __N_SSG = true;
+function Videos({ posts }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_5d5ea655$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].className,
         style: {
@@ -522,7 +525,7 @@ function Videos() {
                         children: "Videos"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 15,
+                        lineNumber: 17,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
@@ -530,7 +533,7 @@ function Videos() {
                         content: "width=device-width, initial-scale=1"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 16,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
@@ -538,13 +541,13 @@ function Videos() {
                         href: "/favicon.ico"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 17,
+                        lineNumber: 19,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 14,
+                lineNumber: 16,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -552,7 +555,7 @@ function Videos() {
                 strategy: "afterInteractive"
             }, void 0, false, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 20,
+                lineNumber: 22,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -563,7 +566,7 @@ function Videos() {
                 }
             }, void 0, false, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 25,
+                lineNumber: 27,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -573,7 +576,7 @@ function Videos() {
                 children: "Videos"
             }, void 0, false, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 37,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -594,7 +597,7 @@ function Videos() {
                         children: "Home"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 48,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -618,7 +621,7 @@ function Videos() {
                         children: "Videos"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 54,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -630,7 +633,7 @@ function Videos() {
                         children: "Photos"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 57,
+                        lineNumber: 53,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -642,29 +645,88 @@ function Videos() {
                         children: "Downloads"
                     }, void 0, false, {
                         fileName: "[project]/pages/videos.js",
-                        lineNumber: 60,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 39,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 style: {
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                    gap: '30px',
+                    justifyItems: 'center',
                     marginTop: '40px'
                 },
-                children: "Video content coming soon."
+                children: posts.map((post, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                        href: post.link,
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        style: {
+                            textAlign: 'center',
+                            width: '100%',
+                            textDecoration: 'none',
+                            color: 'inherit'
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
+                                padding: '20px',
+                                borderRadius: '8px'
+                            },
+                            onMouseEnter: (e)=>{
+                                e.currentTarget.style.transform = 'scale(1.05)';
+                                e.currentTarget.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+                            },
+                            onMouseLeave: (e)=>{
+                                e.currentTarget.style.transform = 'scale(1)';
+                                e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.05)';
+                            },
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    display: 'block',
+                                    fontSize: '18px',
+                                    color: 'black',
+                                    transition: 'color 0.3s ease, transform 0.3s ease'
+                                },
+                                onMouseEnter: (e)=>{
+                                    e.currentTarget.style.color = '#555';
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                },
+                                onMouseLeave: (e)=>{
+                                    e.currentTarget.style.color = 'black';
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                },
+                                children: post.title
+                            }, void 0, false, {
+                                fileName: "[project]/pages/videos.js",
+                                lineNumber: 97,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/pages/videos.js",
+                            lineNumber: 79,
+                            columnNumber: 13
+                        }, this)
+                    }, index, false, {
+                        fileName: "[project]/pages/videos.js",
+                        lineNumber: 67,
+                        columnNumber: 11
+                    }, this))
             }, void 0, false, {
                 fileName: "[project]/pages/videos.js",
-                lineNumber: 65,
+                lineNumber: 57,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/videos.js",
-        lineNumber: 10,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
