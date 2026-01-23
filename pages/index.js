@@ -1,91 +1,27 @@
-
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+import Layout from '../Layout';
+
+import {
+  gridStyle,
+  cardStyle,
+  imageWrapperStyle,
+  titleStyle,
+} from '../styles/layout';
 
 export default function Home({ posts }) {
   return (
-    <div
-      className={inter.className}
-      style={{
-        maxWidth: '800px',
-        margin: 'auto',
-        padding: '20px',
-        textAlign: 'center',
-      }}
-    >
-      <Head>
-        <title>Tom Murphy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
-        strategy="afterInteractive"
-      />
-
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html:
-            "window.dataLayer = window.dataLayer || [];\n" +
-            "function gtag(){dataLayer.push(arguments);}\n" +
-            "gtag('js', new Date());\n" +
-            "gtag('config', 'G-7G6D326KL9');",
-        }}
-      />
-
-      <h1 style={{ fontWeight: 600 }}>Tom Murphy</h1>
-      <p>Welcome to my Notes.</p>
-
-      <nav
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '20px',
-          marginTop: '40px',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
-          Home
-        </Link>
-        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
-          Articles
-        </Link>
-        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>
-          Videos
-        </Link>
-        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
-          Photos
-        </Link>
-        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
-          Downloads
-        </Link>
-      </nav>
-
+    <Layout>
       <h2 style={{ fontWeight: 600, marginTop: '40px' }}>Recent Notes</h2>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-          gap: '30px',
-          justifyItems: 'center',
-        }}
-      >
-        {posts.map((post, index) => (
+      <div style={gridStyle}>
+        {posts.slice(0, 4).map((post) => (
           <Link
-            key={index}
+            key={post.slug}
             href={post.link || `/articles/${post.slug}`}
             {...(post.link
               ? { target: '_blank', rel: 'noopener noreferrer' }
@@ -98,10 +34,7 @@ export default function Home({ posts }) {
             }}
           >
             <div
-              style={{
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
-              }}
+              style={cardStyle}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)';
                 e.currentTarget.style.boxShadow =
@@ -113,17 +46,7 @@ export default function Home({ posts }) {
                   '0 4px 8px rgba(0, 0, 0, 0.05)';
               }}
             >
-              <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  aspectRatio: '4 / 3',
-                  backgroundColor: '#f0f0f0',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
-                }}
-              >
+              <div style={imageWrapperStyle}>
                 <Image
                   src={post.thumbnail || '/placeholder.png'}
                   alt={post.title}
@@ -133,13 +56,7 @@ export default function Home({ posts }) {
               </div>
 
               <span
-                style={{
-                  display: 'block',
-                  marginTop: '10px',
-                  fontSize: '18px',
-                  color: 'black',
-                  transition: 'color 0.3s ease, transform 0.3s ease',
-                }}
+                style={titleStyle}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = '#555';
                   e.currentTarget.style.transform = 'translateY(-2px)';
@@ -155,7 +72,7 @@ export default function Home({ posts }) {
           </Link>
         ))}
       </div>
-    </div>
+    </Layout>
   );
 }
 
@@ -197,4 +114,3 @@ export async function getStaticProps() {
 
   return { props: { posts } };
 }
-

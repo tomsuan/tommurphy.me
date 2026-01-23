@@ -501,10 +501,8 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$head$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/head.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/script.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$next$5d2f$internal$2f$font$2f$google$2f$inter_ba0c456e$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[next]/internal/font/google/inter_ba0c456e.js [client] (ecmascript)");
-;
 ;
 ;
 ;
@@ -526,7 +524,7 @@ function Downloads({ files }) {
                         children: "Tom Murphy - Downloads"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 22,
+                        lineNumber: 20,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meta", {
@@ -534,7 +532,7 @@ function Downloads({ files }) {
                         content: "width=device-width, initial-scale=1"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 23,
+                        lineNumber: 21,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("link", {
@@ -542,13 +540,13 @@ function Downloads({ files }) {
                         href: "/favicon.ico"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 24,
+                        lineNumber: 22,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 21,
+                lineNumber: 19,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -556,7 +554,7 @@ function Downloads({ files }) {
                 strategy: "afterInteractive"
             }, void 0, false, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 28,
+                lineNumber: 25,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$script$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -572,7 +570,7 @@ function Downloads({ files }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 32,
+                lineNumber: 29,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -583,7 +581,7 @@ function Downloads({ files }) {
                 children: "Downloads"
             }, void 0, false, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 45,
+                lineNumber: 42,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -604,7 +602,7 @@ function Downloads({ files }) {
                         children: "Home"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 48,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -616,7 +614,7 @@ function Downloads({ files }) {
                         children: "Articles"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 49,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -628,7 +626,7 @@ function Downloads({ files }) {
                         children: "Videos"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 50,
+                        lineNumber: 47,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -640,7 +638,7 @@ function Downloads({ files }) {
                         children: "Photos"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 51,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -652,13 +650,13 @@ function Downloads({ files }) {
                         children: "Downloads"
                     }, void 0, false, {
                         fileName: "[project]/pages/downloads.js",
-                        lineNumber: 52,
+                        lineNumber: 49,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 47,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -672,14 +670,14 @@ function Downloads({ files }) {
                             children: "/public/downloads/"
                         }, void 0, false, {
                             fileName: "[project]/pages/downloads.js",
-                            lineNumber: 57,
+                            lineNumber: 54,
                             columnNumber: 45
                         }, this),
                         " and they will appear here automatically."
                     ]
                 }, void 0, true, {
                     fileName: "[project]/pages/downloads.js",
-                    lineNumber: 57,
+                    lineNumber: 54,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                     style: {
@@ -717,22 +715,22 @@ function Downloads({ files }) {
                                         overflow: 'hidden',
                                         marginBottom: '12px'
                                     },
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: f.thumbnail,
                                         alt: f.title,
-                                        fill: true,
                                         style: {
+                                            width: '100%',
+                                            height: '100%',
                                             objectFit: 'cover'
-                                        },
-                                        sizes: "(max-width: 768px) 100vw, 33vw"
+                                        }
                                     }, void 0, false, {
                                         fileName: "[project]/pages/downloads.js",
-                                        lineNumber: 100,
+                                        lineNumber: 97,
                                         columnNumber: 21
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/pages/downloads.js",
-                                    lineNumber: 89,
+                                    lineNumber: 86,
                                     columnNumber: 19
                                 }, this) : null,
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -743,7 +741,7 @@ function Downloads({ files }) {
                                     children: f.title
                                 }, void 0, false, {
                                     fileName: "[project]/pages/downloads.js",
-                                    lineNumber: 110,
+                                    lineNumber: 105,
                                     columnNumber: 17
                                 }, this),
                                 f.description ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -756,7 +754,7 @@ function Downloads({ files }) {
                                     children: f.description
                                 }, void 0, false, {
                                     fileName: "[project]/pages/downloads.js",
-                                    lineNumber: 113,
+                                    lineNumber: 108,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     style: {
@@ -764,7 +762,7 @@ function Downloads({ files }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/pages/downloads.js",
-                                    lineNumber: 117,
+                                    lineNumber: 112,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -784,7 +782,7 @@ function Downloads({ files }) {
                                             children: f.sizeLabel
                                         }, void 0, false, {
                                             fileName: "[project]/pages/downloads.js",
-                                            lineNumber: 129,
+                                            lineNumber: 124,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -805,40 +803,40 @@ function Downloads({ files }) {
                                                 children: "Download"
                                             }, void 0, false, {
                                                 fileName: "[project]/pages/downloads.js",
-                                                lineNumber: 132,
+                                                lineNumber: 127,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/pages/downloads.js",
-                                            lineNumber: 131,
+                                            lineNumber: 126,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/pages/downloads.js",
-                                    lineNumber: 120,
+                                    lineNumber: 115,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, f.href, true, {
                             fileName: "[project]/pages/downloads.js",
-                            lineNumber: 70,
+                            lineNumber: 67,
                             columnNumber: 15
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/pages/downloads.js",
-                    lineNumber: 59,
+                    lineNumber: 56,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/pages/downloads.js",
-                lineNumber: 55,
+                lineNumber: 52,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/pages/downloads.js",
-        lineNumber: 20,
+        lineNumber: 18,
         columnNumber: 5
     }, this);
 }

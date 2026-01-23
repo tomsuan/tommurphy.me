@@ -1,7 +1,5 @@
-
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import Script from 'next/script';
 import fs from 'fs';
 import path from 'path';
@@ -24,7 +22,6 @@ export default function Downloads({ files }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Google tag (gtag.js) */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
         strategy="afterInteractive"
@@ -97,12 +94,10 @@ export default function Downloads({ files }) {
                       marginBottom: '12px'
                     }}
                   >
-                    <Image
+                    <img
                       src={f.thumbnail}
                       alt={f.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   </div>
                 ) : null}
@@ -170,7 +165,6 @@ export async function getStaticProps() {
     }
 
     const entries = fs.readdirSync(dir);
-
     const IMAGE_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg']);
 
     const files = entries
@@ -216,4 +210,3 @@ export async function getStaticProps() {
     return { props: { files: [] } };
   }
 }
-
