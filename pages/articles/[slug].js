@@ -1,10 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
 import Layout from '../../Layout';
+import { getAllPostSlugs, getPostBySlug } from '../../lib/content';
 
 export default function Article({ title, content }) {
   return (
@@ -22,14 +20,10 @@ export default function Article({ title, content }) {
 }
 
 export async function getStaticPaths() {
-  const postsDirectory = path.join(process.cwd(), 'posts');
+  const slugs = getAllPostSlugs();
 
-  const filenames = fs
-    .readdirSync(postsDirectory)
-    .filter((file) => file.endsWith('.md'));
-
-  const paths = filenames.map((filename) => ({
-    params: { slug: filename.replace(/\.md$/, '') },
+  const paths = slugs.map((slug) => ({
+    params: { slug },
   }));
 
   return {
@@ -39,18 +33,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), 'posts', `${params.slug}.md`);
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-
-  const { data, content } = matter(fileContents);
+  const post = getPostBySlug(params.slug);
 
   const processedContent = await remark()
     .use(html)
-    .process(content);
+    .process(post.content);
 
   return {
     props: {
-      title: data.title ?? 'Untitled',
+      title: post.data.title ?? 'Untitled',
       content: processedContent.toString(),
     },
   };
