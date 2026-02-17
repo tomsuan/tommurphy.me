@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint ."
     },
     "dependencies": {
         "@emotion/react": "^11.14.0",
@@ -27,5 +27,8 @@
         "remark-html": "^16.0.1",
         "rss-parser": "^3.13.0",
         "sanitize-filename": "^1.6.3"
+    },
+    "devDependencies": {
+        "baseline-browser-mapping": "^2.9.19"
     }
 }
