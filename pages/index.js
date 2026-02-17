@@ -1,8 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 
 import Layout from '../Layout';
 
@@ -12,6 +9,8 @@ import {
   imageWrapperStyle,
   titleStyle,
 } from '../styles/layout';
+
+import { getAllPosts } from '../lib/content';
 
 export default function Home({ posts }) {
   return (
@@ -77,38 +76,14 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  const postsDirectory = path.join(process.cwd(), 'posts');
-
-  let filenames;
-  try {
-    filenames = fs
-      .readdirSync(postsDirectory)
-      .filter((file) => file.endsWith('.md'));
-  } catch (error) {
-    console.error('Error reading posts directory:', error);
-    return { props: { posts: [] } };
-  }
-
-  const posts = filenames
-    .map((filename) => {
-      try {
-        const filePath = path.join(postsDirectory, filename);
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const { data } = matter(fileContent);
-        const slug = filename.replace(/\.md$/, '');
-
-        return {
-          title: data.title ?? 'Untitled',
-          thumbnail: data.thumbnail || null,
-          link: data.link || null,
-          date: data.date ? new Date(data.date).getTime() : 0,
-          slug,
-        };
-      } catch (error) {
-        console.error(`Error processing file ${filename}:`, error);
-        return null;
-      }
-    })
+  const posts = getAllPosts()
+    .map((post) => ({
+      title: post.title ?? 'Untitled',
+      thumbnail: post.thumbnail || null,
+      link: post.link || null,
+      date: post.date ? new Date(post.date).getTime() : 0,
+      slug: post.slug,
+    }))
     .filter((post) => post && post.title && post.date)
     .sort((a, b) => b.date - a.date);
 
