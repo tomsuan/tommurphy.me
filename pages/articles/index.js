@@ -1,172 +1,104 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import Script from 'next/script';
-import { Inter } from 'next/font/google';
-import { getAllPosts } from '../../lib/content';
+import Image from "next/image";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] });
+import Layout from "../../Layout";
+import { getAllPosts } from "../../lib/content";
 
 export default function Articles({ posts }) {
   return (
-    <>
-      <Head>
-        <title>Tom Murphy</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout title="Tom Murphy - Articles" description="Articles">
+      <h2 style={{ fontWeight: 600, marginTop: "40px" }}>Articles</h2>
 
-      {/* Google tag (gtag.js) */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-7G6D326KL9');
-          `,
-        }}
-      />
-
-      <div
-        className={inter.className}
-        style={{ maxWidth: '1200px', margin: 'auto', padding: '20px' }}
-      >
-        <h1 style={{ textAlign: 'center', fontWeight: 600 }}>
-          Tom Murphy - Articles
-        </h1>
-
-        <nav
+      <div style={{ marginTop: "40px" }}>
+        <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '20px',
-            marginTop: '40px',
-            flexWrap: 'wrap',
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+            gap: "30px",
+            justifyItems: "center",
           }}
         >
-          <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
-            Home
-          </Link>
-          <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
-            Articles
-          </Link>
-          <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>
-            Videos
-          </Link>
-          <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
-            Photos
-          </Link>
-          <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
-            Downloads
-          </Link>
-        </nav>
-
-        <div style={{ marginTop: '40px' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-              gap: '30px',
-              justifyItems: 'center',
-            }}
-          >
-            {posts.map((post, index) => (
-              <Link
-                key={index}
-                href={post.link || `/articles/${post.slug}`}
-                {...(post.link
-                  ? { target: '_blank', rel: 'noopener noreferrer' }
-                  : {})}
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={post.link || `/articles/${post.slug}`}
+              {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              style={{
+                textAlign: "center",
+                width: "100%",
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <div
                 style={{
-                  textAlign: 'center',
-                  width: '100%',
-                  textDecoration: 'none',
-                  color: 'inherit',
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.05)";
                 }}
               >
                 <div
                   style={{
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                    e.currentTarget.style.boxShadow =
-                      '0 8px 16px rgba(0, 0, 0, 0.1)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow =
-                      '0 4px 8px rgba(0, 0, 0, 0.05)';
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "4 / 3",
+                    backgroundColor: "#f0f0f0",
+                    borderRadius: "8px",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
                   }}
                 >
-                  <div
-                    style={{
-                      position: 'relative',
-                      width: '100%',
-                      aspectRatio: '4 / 3',
-                      backgroundColor: '#f0f0f0',
-                      borderRadius: '8px',
-                      overflow: 'hidden',
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.05)',
-                    }}
-                  >
-                    <Image
-                      src={post.thumbnail || '/placeholder.png'}
-                      alt={post.title}
-                      fill
-                      style={{ objectFit: 'contain', borderRadius: '8px' }}
-                    />
-                  </div>
-
-                  <span
-                    style={{
-                      display: 'block',
-                      marginTop: '10px',
-                      fontSize: '18px',
-                      color: 'black',
-                      transition: 'color 0.3s ease, transform 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#555';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'black';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                    }}
-                  >
-                    {post.title}
-                  </span>
+                  <Image
+                    src={post.thumbnail || "/placeholder.png"}
+                    alt={post.title || "Untitled"}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    style={{ objectFit: "contain", borderRadius: "8px" }}
+                  />
                 </div>
-              </Link>
-            ))}
-          </div>
+
+                <span
+                  style={{
+                    display: "block",
+                    marginTop: "10px",
+                    fontSize: "18px",
+                    color: "black",
+                    transition: "color 0.3s ease, transform 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#555";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "black";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  {post.title || "Untitled"}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getAllPosts()
-    .map((post) => ({
-      title: post.title ?? 'Untitled',
-      thumbnail: post.thumbnail || null,
-      link: post.link || null,
-      // keep existing behaviour: numeric date for sorting consistency
-      date: post.date ? new Date(post.date).getTime() : 0,
-      slug: post.slug,
-    }))
-    .filter((post) => post && post.title && post.date)
-    .sort((a, b) => b.date - a.date);
+  const posts = getAllPosts().map((post) => ({
+    slug: post.slug,
+    title: post.title ?? "Untitled",
+    thumbnail: post.thumbnail || null,
+    link: post.link || null,
+  }));
 
   return { props: { posts } };
 }
