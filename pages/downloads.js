@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
+import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 import { Inter } from 'next/font/google';
@@ -22,10 +23,7 @@ export default function Downloads({ files }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9"
-        strategy="afterInteractive"
-      />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-7G6D326KL9" strategy="afterInteractive" />
       <Script
         id="gtag-init"
         strategy="afterInteractive"
@@ -42,16 +40,28 @@ export default function Downloads({ files }) {
       <h1 style={{ textAlign: 'center', fontWeight: 600 }}>Downloads</h1>
 
       <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px', flexWrap: 'wrap' }}>
-        <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>Home</Link>
-        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>Articles</Link>
-        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>Videos</Link>
-        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>Photos</Link>
-        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>Downloads</Link>
+        <Link href="/" style={{ textDecoration: 'none', color: 'black' }}>
+          Home
+        </Link>
+        <Link href="/articles" style={{ textDecoration: 'none', color: 'black' }}>
+          Articles
+        </Link>
+        <Link href="/videos" style={{ textDecoration: 'none', color: 'black' }}>
+          Videos
+        </Link>
+        <Link href="/photos" style={{ textDecoration: 'none', color: 'black' }}>
+          Photos
+        </Link>
+        <Link href="/downloads" style={{ textDecoration: 'none', color: 'black' }}>
+          Downloads
+        </Link>
       </nav>
 
       <main style={{ marginTop: '40px' }}>
         {files.length === 0 ? (
-          <p>No downloads yet. Put files in <code>/public/downloads/</code> and they will appear here automatically.</p>
+          <p>
+            No downloads yet. Put files in <code>/public/downloads/</code> and they will appear here automatically.
+          </p>
         ) : (
           <ul
             style={{
@@ -60,7 +70,7 @@ export default function Downloads({ files }) {
               margin: 0,
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-              gap: '24px'
+              gap: '24px',
             }}
           >
             {files.map((f) => (
@@ -71,7 +81,7 @@ export default function Downloads({ files }) {
                   borderRadius: '12px',
                   padding: '14px',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.04)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
@@ -91,13 +101,15 @@ export default function Downloads({ files }) {
                       backgroundColor: '#f5f5f5',
                       borderRadius: '8px',
                       overflow: 'hidden',
-                      marginBottom: '12px'
+                      marginBottom: '12px',
                     }}
                   >
-                    <img
+                    <Image
                       src={f.thumbnail}
                       alt={f.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 400px"
+                      style={{ objectFit: 'cover' }}
                     />
                   </div>
                 ) : null}
@@ -118,28 +130,27 @@ export default function Downloads({ files }) {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '12px',
-                    marginTop: '8px'
+                    marginTop: '8px',
                   }}
                 >
                   <div style={{ fontSize: '13px', opacity: 0.7 }}>{f.sizeLabel}</div>
 
-                  <Link href={f.href} legacyBehavior>
-                    <a
-                      download
-                      style={{
-                        display: 'inline-block',
-                        padding: '10px 14px',
-                        borderRadius: '999px',
-                        textDecoration: 'none',
-                        color: 'white',
-                        background: 'black',
-                        fontSize: '14px',
-                        fontWeight: 600
-                      }}
-                    >
-                      Download
-                    </a>
-                  </Link>
+                  <a
+                    href={f.href}
+                    download
+                    style={{
+                      display: 'inline-block',
+                      padding: '10px 14px',
+                      borderRadius: '999px',
+                      textDecoration: 'none',
+                      color: 'white',
+                      background: 'black',
+                      fontSize: '14px',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Download
+                  </a>
                 </div>
               </li>
             ))}
@@ -199,7 +210,7 @@ export async function getStaticProps() {
           sizeLabel: human(stat.size),
           title,
           description,
-          thumbnail
+          thumbnail,
         };
       })
       .filter(Boolean);

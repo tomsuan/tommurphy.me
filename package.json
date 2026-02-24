@@ -1,34 +1,31 @@
 {
-    "name": "my-website",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "eslint ."
-    },
-    "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-        "@mui/material": "^5.16.14",
-        "@supabase/supabase-js": "^2.80.0",
-        "eslint": "8.45.0",
-        "eslint-config-next": "13.4.10",
-        "framer-motion": "^12.4.7",
-        "gray-matter": "^4.0.3",
-        "jsdom": "^26.0.0",
-        "next": "^16.0.7",
-        "node-fetch": "^2.7.0",
-        "puppeteer": "^24.3.0",
-        "react": "18.2.0",
-        "react-dom": "18.2.0",
-        "remark": "^15.0.1",
-        "remark-html": "^16.0.1",
-        "rss-parser": "^3.13.0",
-        "sanitize-filename": "^1.6.3"
-    },
-    "devDependencies": {
-        "baseline-browser-mapping": "^2.9.19"
-    }
+  "name": "my-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^5.16.14",
+    "@supabase/supabase-js": "^2.80.0",
+    "framer-motion": "^12.4.7",
+    "gray-matter": "^4.0.3",
+    "next": "16.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "rss-parser": "^3.13.0",
+    "sanitize-filename": "^1.6.3"
+  },
+  "devDependencies": {
+    "baseline-browser-mapping": "^2.9.19",
+    "eslint": "9.39.0",
+    "eslint-config-next": "16.1.6"
+  }
 }
