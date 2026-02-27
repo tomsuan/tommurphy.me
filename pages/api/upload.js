@@ -8,8 +8,12 @@ export default function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { title, thumbnail, link, content } = req.body;
+  const secret = req.headers['x-admin-secret'];
+  if (!secret || secret !== process.env.NEXT_PUBLIC_ADMIN_SECRET) {
+    return res.status(401).json({ error: 'Unauthorised' });
+  }
 
+  const { title, thumbnail, link, content } = req.body;
   if (!title) {
     return res.status(400).json({ error: 'Title is required' });
   }
