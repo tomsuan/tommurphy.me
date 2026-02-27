@@ -5,6 +5,18 @@ import Layout from "../../Layout";
 import { gridStyle, cardStyle, imageWrapperStyle, titleStyle } from "../../styles/layout";
 import { getAllPosts } from "../../lib/content";
 
+async function trackClick(title, url) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, url }),
+    });
+  } catch {
+    // Non-blocking
+  }
+}
+
 export default function Articles({ posts }) {
   return (
     <Layout title="Tom Murphy - Articles" description="Articles">
@@ -17,9 +29,27 @@ export default function Articles({ posts }) {
               key={post.slug}
               href={post.link || `/articles/${post.slug}`}
               {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              style={{ textAlign: "center", width: "100%" }}
+              onClick={() => {
+                if (post.link) trackClick(post.title, post.link);
+              }}
+              style={{
+                textAlign: "center",
+                width: "100%",
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
-              <div className="card" style={cardStyle}>
+              <div
+                style={cardStyle}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.05)";
+                }}
+              >
                 <div style={imageWrapperStyle}>
                   <Image
                     src={post.thumbnail || "/placeholder.png"}
@@ -30,7 +60,17 @@ export default function Articles({ posts }) {
                   />
                 </div>
 
-                <span className="card-title" style={titleStyle}>
+                <span
+                  style={titleStyle}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#555";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "black";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
                   {post.title || "Untitled"}
                 </span>
               </div>
