@@ -10,6 +10,18 @@ function human(size) {
   return (size / Math.pow(1024, i)).toFixed(2) * 1 + " " + ["B", "kB", "MB", "GB", "TB"][i];
 }
 
+async function trackDownload(filename) {
+  try {
+    await fetch("/api/recordDownload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filename }),
+    });
+  } catch {
+    // Non-blocking — never interrupt the download
+  }
+}
+
 export default function Downloads({ files }) {
   return (
     <Layout title="Tom Murphy - Downloads" description="Downloads">
@@ -95,6 +107,7 @@ export default function Downloads({ files }) {
                 <a
                   href={f.href}
                   download
+                  onClick={() => trackDownload(f.name)}
                   style={{
                     display: "inline-block",
                     padding: "10px 14px",

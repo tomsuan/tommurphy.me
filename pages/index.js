@@ -6,6 +6,18 @@ import Layout from "../Layout";
 import { gridStyle, cardStyle, imageWrapperStyle, titleStyle } from "../styles/layout";
 import { getAllPosts } from "../lib/content";
 
+async function trackClick(title, url) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, url }),
+    });
+  } catch {
+    // Non-blocking — never interrupt the navigation
+  }
+}
+
 export default function Home({ posts }) {
   return (
     <Layout title="Tom Murphy" description="Notes by Tom Murphy">
@@ -17,6 +29,9 @@ export default function Home({ posts }) {
             key={post.slug}
             href={post.link || `/articles/${post.slug}`}
             {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            onClick={() => {
+              if (post.link) trackClick(post.title, post.link);
+            }}
             style={{
               textAlign: "center",
               width: "100%",
