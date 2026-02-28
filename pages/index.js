@@ -17,33 +17,49 @@ async function trackClick(title, url) {
 export default function Home({ posts }) {
   return (
     <Layout title="Tom Murphy" description="Notes by Tom Murphy">
-      <h2 style={{ fontWeight: 600, marginTop: "40px" }}>Recent Notes</h2>
-      <div style={gridStyle}>
-        {posts.slice(0, 4).map((post) => (
-          <Link
-            key={post.slug}
-            href={post.link || "/articles/" + post.slug}
-            {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            onClick={() => { if (post.link) trackClick(post.title, post.link); }}
-            style={{ textAlign: "center", width: "100%", textDecoration: "none", color: "inherit" }}
-          >
-            <div style={cardStyle} className="card">
-              <div style={imageWrapperStyle}>
-                <Image
-                  src={post.thumbnail || "/placeholder.png"}
-                  alt={post.title || "Untitled"}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  style={{ objectFit: "contain", borderRadius: "8px" }}
-                />
+      <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
+        Recent Notes
+      </h2>
+
+      {posts.length === 0 ? (
+        <p style={{ color: "#666", fontStyle: "italic" }}>
+          No notes available yet.
+        </p>
+      ) : (
+        <div style={gridStyle}>
+          {posts.slice(0, 4).map((post) => (
+            <Link
+              key={post.slug}
+              href={post.link || "/articles/" + post.slug}
+              {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              onClick={() => { if (post.link) trackClick(post.title, post.link); }}
+              style={{ 
+                textAlign: "center", 
+                width: "100%", 
+                textDecoration: "none", 
+                color: "inherit",
+                display: "block",
+              }}
+            >
+              <div style={cardStyle} className="card">
+                <div style={imageWrapperStyle}>
+                  <Image
+                    src={post.thumbnail || "/placeholder.png"}
+                    alt={`Thumbnail for "${post.title || "Untitled note"}"`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    style={{ objectFit: "contain", borderRadius: "8px" }}
+                    priority={posts.indexOf(post) < 2}
+                  />
+                </div>
+                <span style={titleStyle} className="card-title">
+                  {post.title || "Untitled"}
+                </span>
               </div>
-              <span style={titleStyle} className="card-title">
-                {post.title || "Untitled"}
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 }

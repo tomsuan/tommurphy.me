@@ -1,9 +1,13 @@
+// navigation.js
 const navigation = [
-  { label: 'Home', href: '/' },
-  { label: 'Articles', href: '/articles' },
-  { label: 'Videos', href: '/videos' },
-  { label: 'Photos', href: '/photos' },
-  { label: 'Downloads', href: '/downloads' },
+  { name: 'Home', href: '/' },
+  { name: 'Notes', href: '/' },          // optional alias if you want to emphasize notes
+  { name: 'About', href: '/about' },
+  // Keep or add future sections when ready:
+  // { name: 'Articles', href: '/articles' },
+  // { name: 'Videos',   href: '/videos' },
+  // { name: 'Photos',   href: '/photos' },
+  // { name: 'Downloads', href: '/downloads' },
 ];
 
 export default navigation;
