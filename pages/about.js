@@ -10,7 +10,7 @@ export default function About() {
         About
       </h2>
 
-      <div style={{ maxWidth: "65ch", lineHeight: 1.6, color: "#333" }}>
+      <div style={{ maxWidth: "65ch", lineHeight: 1.6, color: "#333", textAlign: "left" }}>
         <p style={{ marginBottom: "1.2rem" }}>
           These notes are written primarily to clarify my own thinking on technology, incentives, human behavior, organizational dynamics, and long-term consequences.
         </p>
