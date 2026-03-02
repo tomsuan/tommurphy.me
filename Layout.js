@@ -39,6 +39,7 @@ export default function Layout({
         <meta property="og:url" content={`${SITE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`} />
         <meta property="og:site_name" content="Tom Murphy" />
 
+        {/* Per-article Open Graph image */}
         {image && (
           <>
             <meta property="og:image" content={`${SITE_URL}${image}`} />
