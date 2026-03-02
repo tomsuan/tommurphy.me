@@ -11,12 +11,13 @@ const inter = Inter({ subsets: ["latin"] });
 const DEFAULT_TITLE = "Tom Murphy";
 const DEFAULT_DESCRIPTION = "Notes by Tom Murphy.";
 
-const SITE_URL = "https://tommurphy.me"; // Change this to your actual domain if different
+const SITE_URL = "https://tommurphy.me";
 
 export default function Layout({
   children,
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
+  image = null,
 }) {
   const fullTitle = title?.trim() ? title.trim() : DEFAULT_TITLE;
   const fullDescription = description?.trim() ? description.trim() : DEFAULT_DESCRIPTION;
@@ -27,24 +28,31 @@ export default function Layout({
         <title>{fullTitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content={fullDescription} />
+        <link rel="icon" href="/favicon.ico" />
 
-        {/* Basic SEO */}
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${SITE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`} />
 
-        {/* Open Graph (for social sharing: X, LinkedIn, Facebook, etc.) */}
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={fullDescription} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:url" content={`${SITE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`} />
         <meta property="og:site_name" content="Tom Murphy" />
 
-        {/* Optional: Twitter/X Card (summary card is minimal and clean) */}
-        <meta name="twitter:card" content="summary" />
+        {image && (
+          <>
+            <meta property="og:image" content={`${SITE_URL}${image}`} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:alt" content={fullTitle} />
+          </>
+        )}
+
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={fullDescription} />
-
-        <link rel="icon" href="/favicon.ico" />
+        {image && <meta name="twitter:image" content={`${SITE_URL}${image}`} />}
       </Head>
 
       {/* GA only loads if consent previously accepted */}
