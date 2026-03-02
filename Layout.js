@@ -55,54 +55,15 @@ export default function Layout({
         }}
       />
 
-      <header>
-        <h1 style={{ fontWeight: 600, marginBottom: "0.25rem" }}>{DEFAULT_TITLE}</h1>
-        <p style={{ marginBottom: "1rem", color: "#444" }}>
-          Welcome to my Notes.
-        </p>
+      <h1 style={{ fontWeight: 600 }}>{DEFAULT_TITLE}</h1>
+      <p>Welcome to my Notes.</p>
 
-        {/* Short identity statement – visible site-wide */}
-        <p style={{
-          fontSize: "1.05rem",
-          lineHeight: 1.5,
-          color: "#555",
-          maxWidth: "65ch",
-          marginBottom: "1.5rem",
-        }}>
-          Personal notes and reflections on technology, incentives, human behavior,
-          and the systems that shape decisions — written mainly for myself and shared
-          in case they are useful to others.
-        </p>
-      </header>
-
-      {/* Navigation – explicit visibility and spacing */}
-      <nav
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "2rem",
-          margin: "1.5rem 0 2.5rem 0",
-          fontSize: "1.05rem",
-          fontWeight: 500,
-          visibility: "visible",
-          opacity: 1,
-          minHeight: "auto",
-          ...navStyle,  // your original styles applied last
-        }}
-        role="navigation"
-        aria-label="Main navigation"
-      >
+      <nav style={navStyle}>
         {navigation.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            style={{
-              textDecoration: "none",
-              color: "black",
-              transition: "color 0.15s ease",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = "#0066cc"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = "black"; }}
+            style={{ textDecoration: "none", color: "black" }}
           >
             {item.name}
           </Link>
