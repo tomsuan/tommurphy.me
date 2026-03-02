@@ -17,7 +17,7 @@ export default function Layout({
   children,
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
-  image = null,
+  image = null,  // new optional prop for og:image
 }) {
   const fullTitle = title?.trim() ? title.trim() : DEFAULT_TITLE;
   const fullDescription = description?.trim() ? description.trim() : DEFAULT_DESCRIPTION;
@@ -39,13 +39,12 @@ export default function Layout({
         <meta property="og:url" content={`${SITE_URL}${typeof window !== 'undefined' ? window.location.pathname : ''}`} />
         <meta property="og:site_name" content="Tom Murphy" />
 
-        {/* Per-article Open Graph image */}
         {image && (
           <>
             <meta property="og:image" content={`${SITE_URL}${image}`} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:type" content="image/jpeg" /> {/* change to image/png if your thumbnails are PNG */}
             <meta property="og:image:alt" content={fullTitle} />
           </>
         )}

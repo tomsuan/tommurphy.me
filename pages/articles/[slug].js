@@ -18,7 +18,7 @@ export default function Article({ post }) {
   return (
     <Layout 
       title={title + " - Tom Murphy"}
-      description="Article by Tom Murphy"  // fallback; you may want to use post.data.excerpt if it exists
+      description="Article by Tom Murphy"
       image={thumbnail || null}
     >
       <article style={{ marginTop: "40px", textAlign: "left" }}>
