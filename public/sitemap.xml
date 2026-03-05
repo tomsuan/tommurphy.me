@@ -36,12 +36,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- Add high-priority articles manually -->
+  <!-- Example article; add more manually as needed -->
   <url>
     <loc>https://tommurphy.me/articles/goal-setting-framework</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Repeat for other key articles as desired -->
 </urlset>
