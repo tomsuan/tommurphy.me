@@ -34,14 +34,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(post.content);
+  const processedContent = await remark().use(html).process(post.content);
 
   return {
     props: {
-      title: post.data.title ?? "Untitled",
-      date: post.data.date ?? null,
+      title: post.title ?? "Untitled",
+      date: post.date ?? null,
       content: processedContent.toString(),
     },
   };
