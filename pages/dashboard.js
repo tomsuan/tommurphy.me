@@ -1,4 +1,3 @@
-// pages/dashboard.js
 import Layout from "../Layout";
 import redis from "../lib/redis";
 
@@ -10,37 +9,19 @@ function parseEvent(item) {
   }
 }
 
-export async function getServerSideProps({ req, res }) {
-  const adminSecret = process.env.ADMIN_SECRET;
+export async function getServerSideProps({ query }) {
+  const adminSecret = process.env.ADMIN_SECRET || "";
+  const provided = typeof query.key === "string" ? query.key : "";
 
-  if (!adminSecret) {
+  if (!adminSecret || provided !== adminSecret) {
     return {
       props: {
-        error: "ADMIN_SECRET is not set.",
+        authorised: false,
         rows: [],
         total: 0,
+        error: null,
       },
     };
-  }
-
-  const auth = req.headers.authorization || "";
-  const [scheme, encoded] = auth.split(" ");
-
-  if (scheme !== "Basic" || !encoded) {
-    res.setHeader("WWW-Authenticate", 'Basic realm="Dashboard"');
-    res.statusCode = 401;
-    res.end("Authentication required");
-    return { props: {} };
-  }
-
-  const decoded = Buffer.from(encoded, "base64").toString("utf8");
-  const [username, password] = decoded.split(":");
-
-  if (username !== "tom" || password !== adminSecret) {
-    res.setHeader("WWW-Authenticate", 'Basic realm="Dashboard"');
-    res.statusCode = 401;
-    res.end("Access denied");
-    return { props: {} };
   }
 
   try {
@@ -76,6 +57,7 @@ export async function getServerSideProps({ req, res }) {
 
     return {
       props: {
+        authorised: true,
         rows,
         total: parsed.length,
         error: null,
@@ -84,15 +66,66 @@ export async function getServerSideProps({ req, res }) {
   } catch (error) {
     return {
       props: {
-        error: error.message || "Failed to load download data.",
+        authorised: true,
         rows: [],
         total: 0,
+        error: error.message || "Failed to load download data.",
       },
     };
   }
 }
 
-export default function Dashboard({ rows, total, error }) {
+export default function Dashboard({ authorised, rows, total, error }) {
+  if (!authorised) {
+    return (
+      <Layout title="Tom Murphy - Dashboard" description="Private dashboard">
+        <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
+          Download Dashboard
+        </h2>
+
+        <form method="get" action="/dashboard" style={{ maxWidth: "420px" }}>
+          <label
+            htmlFor="key"
+            style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}
+          >
+            Password
+          </label>
+
+          <input
+            id="key"
+            name="key"
+            type="password"
+            style={{
+              width: "100%",
+              padding: "12px",
+              fontSize: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "8px",
+              marginBottom: "16px",
+            }}
+          />
+
+          <button
+            type="submit"
+            style={{
+              display: "inline-block",
+              padding: "10px 14px",
+              borderRadius: "999px",
+              border: "none",
+              color: "white",
+              background: "black",
+              fontSize: "14px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Open dashboard
+          </button>
+        </form>
+      </Layout>
+    );
+  }
+
   return (
     <Layout title="Tom Murphy - Dashboard" description="Private dashboard">
       <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
