@@ -4,16 +4,6 @@ import Layout from "../Layout";
 import { gridStyle, cardStyle, imageWrapperStyle, titleStyle } from "../styles/layout";
 import { getAllPosts } from "../lib/content";
 
-async function trackClick(title, url) {
-  try {
-    await fetch("/api/track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, url }),
-    });
-  } catch {}
-}
-
 export default function Home({ posts }) {
   return (
     <Layout title="Tom Murphy" description="Notes by Tom Murphy">
@@ -30,13 +20,11 @@ export default function Home({ posts }) {
           {posts.slice(0, 4).map((post) => (
             <Link
               key={post.slug}
-              href={post.link || "/articles/" + post.slug}
-              {...(post.link ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              onClick={() => { if (post.link) trackClick(post.title, post.link); }}
-              style={{ 
-                textAlign: "center", 
-                width: "100%", 
-                textDecoration: "none", 
+              href={"/articles/" + post.slug}
+              style={{
+                textAlign: "center",
+                width: "100%",
+                textDecoration: "none",
                 color: "inherit",
                 display: "block",
               }}
@@ -69,7 +57,7 @@ export async function getStaticProps() {
     slug: post.slug,
     title: post.title ?? "Untitled",
     thumbnail: post.thumbnail || null,
-    link: post.link || null,
   }));
+
   return { props: { posts } };
 }

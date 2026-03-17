@@ -16,10 +16,24 @@ async function trackDownload(filename) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ filename }),
+      keepalive: true,
     });
   } catch {
     // Non-blocking — never interrupt the download
   }
+}
+
+async function handleDownload(e, file) {
+  e.preventDefault();
+
+  await trackDownload(file.name);
+
+  const link = document.createElement("a");
+  link.href = file.href;
+  link.download = file.name;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 export default function Downloads({ files }) {
@@ -106,8 +120,8 @@ export default function Downloads({ files }) {
 
                 <a
                   href={f.href}
-                  download
-                  onClick={() => trackDownload(f.name)}
+                  download={f.name}
+                  onClick={(e) => handleDownload(e, f)}
                   style={{
                     display: "inline-block",
                     padding: "10px 14px",

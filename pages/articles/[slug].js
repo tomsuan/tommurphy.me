@@ -1,29 +1,19 @@
-import { useEffect } from "react";
 import { remark } from "remark";
 import html from "remark-html";
 import Layout from "../../Layout";
 import { getAllPostSlugs, getPostBySlug } from "../../lib/content";
 
-export default function Article({ post }) {
-  const { title, content, slug, thumbnail } = post;
-
-  useEffect(() => {
-    fetch("/api/track", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, url: "/articles/" + slug }),
-    }).catch(() => {});
-  }, [slug, title]);
-
+export default function Article({ title, date, content }) {
   return (
-    <Layout 
-      title={title + " - Tom Murphy"}
-      description="Article by Tom Murphy"
-      image={thumbnail || null}
-    >
-      <article style={{ marginTop: "40px", textAlign: "left" }}>
-        <h2 style={{ fontWeight: 600 }}>{title}</h2>
-        <div style={{ marginTop: "30px", lineHeight: "1.6" }} dangerouslySetInnerHTML={{ __html: content }} />
+    <Layout title={title} description={title}>
+      <article style={{ maxWidth: "760px", margin: "40px auto", lineHeight: 1.7 }}>
+        <h1 style={{ fontWeight: 600, marginBottom: "12px" }}>{title}</h1>
+
+        {date ? (
+          <p style={{ color: "#666", marginBottom: "32px" }}>{date}</p>
+        ) : null}
+
+        <div dangerouslySetInnerHTML={{ __html: content }} />
       </article>
     </Layout>
   );
@@ -31,21 +21,28 @@ export default function Article({ post }) {
 
 export async function getStaticPaths() {
   const slugs = getAllPostSlugs();
-  const paths = slugs.map((slug) => ({ params: { slug } }));
-  return { paths, fallback: false };
+  const paths = slugs.map((slug) => ({
+    params: { slug },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
-  const processedContent = await remark().use(html).process(post.content);
+
+  const processedContent = await remark()
+    .use(html)
+    .process(post.content);
+
   return {
     props: {
-      post: {
-        slug: params.slug,
-        title: post.data.title ?? "Untitled",
-        content: processedContent.toString(),
-        thumbnail: post.data.thumbnail || null,
-      },
+      title: post.data.title ?? "Untitled",
+      date: post.data.date ?? null,
+      content: processedContent.toString(),
     },
   };
 }
