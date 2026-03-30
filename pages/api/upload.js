@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   const secret = req.headers['x-admin-secret'];
-  if (!secret || secret !== process.env.NEXT_PUBLIC_ADMIN_SECRET) {
+  if (!secret || secret !== process.env.ADMIN_SECRET) {
     return res.status(401).json({ error: 'Unauthorised' });
   }
 
@@ -86,3 +86,10 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: `Server error: ${error.message}` });
   }
 }
+```
+
+**After replacing the file, do these two things:**
+
+1. **Update your `.env` file** — rename the variable:
+```
+ADMIN_SECRET=your_secret_value_here
