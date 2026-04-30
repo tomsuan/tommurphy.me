@@ -13,20 +13,10 @@ export default function Articles({ posts }) {
           {posts.map((post) => (
             <Link
               key={post.slug}
-              href={"/articles/" + post.slug}
+              href={post.link}
               style={{ textAlign: "center", width: "100%", textDecoration: "none", color: "inherit" }}
             >
-              <div
-                style={cardStyle}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.05)";
-                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(0,0,0,0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.05)";
-                }}
-              >
+              <div style={cardStyle}>
                 <div style={imageWrapperStyle}>
                   <Image
                     src={post.thumbnail || "/placeholder.png"}
@@ -36,17 +26,7 @@ export default function Articles({ posts }) {
                     style={{ objectFit: "contain", borderRadius: "8px" }}
                   />
                 </div>
-                <span
-                  style={titleStyle}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#555";
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "black";
-                    e.currentTarget.style.transform = "translateY(0)";
-                  }}
-                >
+                <span style={titleStyle}>
                   {post.title || "Untitled"}
                 </span>
               </div>
@@ -63,6 +43,7 @@ export async function getStaticProps() {
     slug: post.slug,
     title: post.title ?? "Untitled",
     thumbnail: post.thumbnail || null,
+    link: post.link,
   }));
 
   return { props: { posts } };
