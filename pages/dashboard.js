@@ -78,46 +78,22 @@ export async function getServerSideProps({ query }) {
 export default function Dashboard({ authorised, rows, total, error }) {
   if (!authorised) {
     return (
-      <Layout title="Tom Murphy - Dashboard" description="Private dashboard">
-        <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
-          Download Dashboard
-        </h2>
+      <Layout title="Tom Murphy - Dashboard" description="Private dashboard" pathname="/dashboard">
+        <h2 className="font-semibold mt-10 mb-6 text-3xl">Download Dashboard</h2>
 
-        <form method="get" action="/dashboard" style={{ maxWidth: "420px" }}>
-          <label
-            htmlFor="key"
-            style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}
-          >
-            Password
-          </label>
+        <form method="get" action="/dashboard" className="max-w-[420px]">
+          <label htmlFor="key" className="block mb-2 font-semibold">Password</label>
 
           <input
             id="key"
             name="key"
             type="password"
-            style={{
-              width: "100%",
-              padding: "12px",
-              fontSize: "16px",
-              border: "1px solid #ccc",
-              borderRadius: "8px",
-              marginBottom: "16px",
-            }}
+            className="w-full p-3 text-base border border-[#ccc] rounded-xl mb-4 box-border"
           />
 
           <button
             type="submit"
-            style={{
-              display: "inline-block",
-              padding: "10px 14px",
-              borderRadius: "999px",
-              border: "none",
-              color: "white",
-              background: "black",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
+            className="inline-block px-5 py-2.5 rounded-full bg-black text-white text-sm font-semibold"
           >
             Open dashboard
           </button>
@@ -127,91 +103,35 @@ export default function Dashboard({ authorised, rows, total, error }) {
   }
 
   return (
-    <Layout title="Tom Murphy - Dashboard" description="Private dashboard">
-      <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
-        Download Dashboard
-      </h2>
+    <Layout title="Tom Murphy - Dashboard" description="Private dashboard" pathname="/dashboard">
+      <h2 className="font-semibold mt-10 mb-6 text-3xl">Download Dashboard</h2>
 
       {error ? (
-        <p style={{ color: "#b00020", fontSize: "15px" }}>{error}</p>
+        <p className="text-red-600 text-[15px]">{error}</p>
       ) : (
         <>
-          <p style={{ marginBottom: "24px", fontSize: "15px" }}>
+          <p className="mb-6 text-[15px]">
             Total recorded downloads: <strong>{total}</strong>
           </p>
 
           {rows.length === 0 ? (
             <p>No download events recorded yet.</p>
           ) : (
-            <div style={{ overflowX: "auto" }}>
-              <table
-                style={{
-                  width: "100%",
-                  borderCollapse: "collapse",
-                  fontSize: "15px",
-                }}
-              >
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-[15px]">
                 <thead>
                   <tr>
-                    <th
-                      style={{
-                        textAlign: "left",
-                        borderBottom: "1px solid #ddd",
-                        padding: "12px 10px",
-                      }}
-                    >
-                      File
-                    </th>
-                    <th
-                      style={{
-                        textAlign: "left",
-                        borderBottom: "1px solid #ddd",
-                        padding: "12px 10px",
-                        width: "120px",
-                      }}
-                    >
-                      Count
-                    </th>
-                    <th
-                      style={{
-                        textAlign: "left",
-                        borderBottom: "1px solid #ddd",
-                        padding: "12px 10px",
-                        width: "240px",
-                      }}
-                    >
-                      Latest
-                    </th>
+                    <th className="text-left border-b border-[#ddd] p-3">File</th>
+                    <th className="text-left border-b border-[#ddd] p-3 w-[120px]">Count</th>
+                    <th className="text-left border-b border-[#ddd] p-3 w-[240px]">Latest</th>
                   </tr>
                 </thead>
                 <tbody>
                   {rows.map((row) => (
                     <tr key={row.filename}>
-                      <td
-                        style={{
-                          borderBottom: "1px solid #eee",
-                          padding: "12px 10px",
-                          verticalAlign: "top",
-                        }}
-                      >
-                        {row.filename}
-                      </td>
-                      <td
-                        style={{
-                          borderBottom: "1px solid #eee",
-                          padding: "12px 10px",
-                          verticalAlign: "top",
-                        }}
-                      >
-                        {row.count}
-                      </td>
-                      <td
-                        style={{
-                          borderBottom: "1px solid #eee",
-                          padding: "12px 10px",
-                          verticalAlign: "top",
-                        }}
-                      >
+                      <td className="border-b border-[#eee] p-3 align-top">{row.filename}</td>
+                      <td className="border-b border-[#eee] p-3 align-top">{row.count}</td>
+                      <td className="border-b border-[#eee] p-3 align-top">
                         {row.latestTimestamp || "—"}
                       </td>
                     </tr>

@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Minimal custom utilities for brand consistency */
+@layer utilities {
+  .brand-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 15px;
+  }
+  
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: #0066cc;
+  }
+  
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;

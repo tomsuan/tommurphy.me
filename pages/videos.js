@@ -6,66 +6,21 @@ import Layout from "../Layout";
 
 export default function Videos({ posts }) {
   return (
-    <Layout title="Tom Murphy - Videos" description="Videos">
-      <h2 style={{ fontWeight: 600, marginTop: "40px" }}>Videos</h2>
+    <Layout title="Tom Murphy - Videos" description="Videos" pathname="/videos">
+      <h2 className="font-semibold mt-10 text-3xl">Videos</h2>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-          gap: "30px",
-          justifyItems: "center",
-          marginTop: "40px",
-        }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 justify-items-center">
         {posts.map((post) => (
           <Link
             key={post.link}
             href={post.link}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              textAlign: "center",
-              width: "100%",
-              textDecoration: "none",
-              color: "inherit",
-            }}
+            className="text-center w-full no-underline text-inherit block p-5 rounded-3xl hover:bg-gray-50 transition-all"
           >
-            <div
-              style={{
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
-                padding: "20px",
-                borderRadius: "8px",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)";
-                e.currentTarget.style.boxShadow = "0 8px 16px rgba(0, 0, 0, 0.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.05)";
-              }}
-            >
-              <span
-                style={{
-                  display: "block",
-                  fontSize: "18px",
-                  color: "black",
-                  transition: "color 0.3s ease, transform 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#555";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "black";
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                {post.title}
-              </span>
-            </div>
+            <span className="block text-xl font-medium text-black hover:text-[#555] transition-colors">
+              {post.title}
+            </span>
           </Link>
         ))}
       </div>
@@ -74,6 +29,7 @@ export default function Videos({ posts }) {
 }
 
 export async function getStaticProps() {
+  // Original getStaticProps unchanged
   const videosDir = path.join(process.cwd(), "public", "videos");
   const VIDEO_EXTS = [".mp4", ".webm", ".mov"];
 

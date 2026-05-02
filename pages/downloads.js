@@ -19,13 +19,12 @@ async function trackDownload(filename) {
       keepalive: true,
     });
   } catch {
-    // Non-blocking — never interrupt the download
+    // Non-blocking
   }
 }
 
 async function handleDownload(e, file) {
   e.preventDefault();
-
   await trackDownload(file.name);
 
   const link = document.createElement("a");
@@ -38,113 +37,64 @@ async function handleDownload(e, file) {
 
 export default function Downloads({ files }) {
   return (
-    <Layout title="Tom Murphy - Downloads" description="Downloads">
-      <h2 style={{ fontWeight: 600, marginTop: "40px" }}>Downloads</h2>
+    <Layout title="Tom Murphy - Downloads" description="Downloads" pathname="/downloads">
+      <h2 className="font-semibold mt-10 text-3xl">Downloads</h2>
 
       {files.length === 0 ? (
-        <p>
-          No downloads yet. Put files in <code>/public/downloads/</code> and they will appear here automatically.
-        </p>
+        <p className="mt-8">No downloads yet. Put files in <code>/public/downloads/</code> and they will appear here automatically.</p>
       ) : (
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: "40px 0 0 0",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: "24px",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           {files.map((f) => (
-            <li
+            <div 
               key={f.href}
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "12px",
-                padding: "14px",
-                boxShadow: "0 4px 8px rgba(0,0,0,0.04)",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-              }}
+              className="border border-[#eee] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-200"
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 16px rgba(0,0,0,0.06)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.04)";
               }}
             >
-              {f.thumbnail ? (
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "4 / 3",
-                    backgroundColor: "#f5f5f5",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                    marginBottom: "12px",
-                  }}
-                >
+              {f.thumbnail && (
+                <div className="relative w-full aspect-[4/3] bg-[#f5f5f5] rounded-2xl overflow-hidden mb-4">
                   <Image
                     src={f.thumbnail}
                     alt={f.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 400px"
-                    style={{ objectFit: "cover" }}
+                    className="object-cover"
                   />
                 </div>
-              ) : null}
-
-              <div style={{ fontWeight: 600, fontSize: "18px" }}>{f.title}</div>
-
-              {f.description ? (
-                <p style={{ margin: "8px 0 12px 0", fontSize: "14px", lineHeight: 1.5, color: "#333" }}>
-                  {f.description}
-                </p>
-              ) : (
-                <div style={{ height: "8px" }} />
               )}
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "12px",
-                  marginTop: "8px",
-                }}
-              >
-                <div style={{ fontSize: "13px", opacity: 0.7 }}>{f.sizeLabel}</div>
+              <div className="font-semibold text-xl mb-2">{f.title}</div>
+
+              {f.description && (
+                <p className="mb-4 text-sm leading-relaxed text-[#333]">{f.description}</p>
+              )}
+
+              <div className="flex items-center justify-between mt-4">
+                <div className="text-xs opacity-70">{f.sizeLabel}</div>
 
                 <a
                   href={f.href}
                   download={f.name}
                   onClick={(e) => handleDownload(e, f)}
-                  style={{
-                    display: "inline-block",
-                    padding: "10px 14px",
-                    borderRadius: "999px",
-                    textDecoration: "none",
-                    color: "white",
-                    background: "black",
-                    fontSize: "14px",
-                    fontWeight: 600,
-                  }}
+                  className="inline-block px-5 py-2.5 rounded-full text-white bg-black text-sm font-semibold no-underline"
                 >
                   Download
                 </a>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
+  // (Unchanged getStaticProps logic - full original retained for functionality)
   try {
     const dir = path.join(process.cwd(), "public", "downloads");
 

@@ -1,34 +1,5 @@
 import { useState } from "react";
 import Layout from "../Layout";
-import { containerStyle } from "../styles/layout";
-
-const inputStyle = {
-  width: "100%",
-  padding: "12px",
-  fontSize: "15px",
-  border: "1px solid #ccc",
-  borderRadius: "8px",
-  boxSizing: "border-box",
-  fontFamily: "inherit",
-};
-
-const labelStyle = {
-  display: "block",
-  marginBottom: "6px",
-  fontWeight: 600,
-  fontSize: "15px",
-};
-
-const buttonStyle = {
-  padding: "10px 24px",
-  borderRadius: "999px",
-  border: "none",
-  color: "white",
-  background: "black",
-  fontSize: "14px",
-  fontWeight: 600,
-  cursor: "pointer",
-};
 
 export default function Admin() {
   const [password, setPassword] = useState("");
@@ -125,20 +96,18 @@ export default function Admin() {
 
   if (!authed) {
     return (
-      <Layout title="Admin | Tom Murphy" description="Admin">
-        <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
-          Admin
-        </h2>
-        <div style={{ maxWidth: "400px", margin: "0 auto", textAlign: "left" }}>
-          <label style={labelStyle}>Password</label>
+      <Layout title="Admin | Tom Murphy" description="Admin" pathname="/admin">
+        <h2 className="font-semibold mt-10 mb-6 text-3xl">Admin</h2>
+        <div className="max-w-[400px] mx-auto text-left">
+          <label className="block mb-2 font-semibold text-[15px]">Password</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
-            style={{ ...inputStyle, marginBottom: "16px" }}
+            className="w-full p-3 text-[15px] border border-[#ccc] rounded-xl mb-4 box-border font-inherit"
           />
-          <button onClick={handleLogin} style={buttonStyle}>
+          <button onClick={handleLogin} className="px-6 py-2.5 rounded-full bg-black text-white text-sm font-semibold">
             Login
           </button>
         </div>
@@ -147,17 +116,14 @@ export default function Admin() {
   }
 
   return (
-    <Layout title="Admin | Tom Murphy" description="Admin">
-      <h2 style={{ fontWeight: 600, marginTop: "40px", marginBottom: "24px" }}>
-        Publish Article
-      </h2>
+    <Layout title="Admin | Tom Murphy" description="Admin" pathname="/admin">
+      <h2 className="font-semibold mt-10 mb-6 text-3xl">Publish Article</h2>
 
-      <div style={{ maxWidth: "560px", margin: "0 auto", textAlign: "left" }}>
-
+      <div className="max-w-[560px] mx-auto text-left">
         {/* Post type selector */}
-        <div style={{ marginBottom: "24px" }}>
-          <label style={labelStyle}>Post Type</label>
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+        <div className="mb-6">
+          <label className="block mb-2 font-semibold text-[15px]">Post Type</label>
+          <div className="flex gap-3 flex-wrap">
             {[
               { value: "both", label: "Site + Substack" },
               { value: "site", label: "Site Only" },
@@ -166,16 +132,11 @@ export default function Admin() {
               <button
                 key={option.value}
                 onClick={() => setPostType(option.value)}
-                style={{
-                  padding: "8px 20px",
-                  borderRadius: "999px",
-                  border: "1px solid #ccc",
-                  background: postType === option.value ? "black" : "white",
-                  color: postType === option.value ? "white" : "black",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
+                className={`px-5 py-2 rounded-full text-sm font-semibold border ${
+                  postType === option.value 
+                    ? "bg-black text-white border-black" 
+                    : "border-[#ccc] bg-white text-black"
+                }`}
               >
                 {option.label}
               </button>
@@ -184,94 +145,79 @@ export default function Admin() {
         </div>
 
         {/* Title */}
-        <div style={{ marginBottom: "16px" }}>
-          <label style={labelStyle}>Title</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-semibold text-[15px]">Title</label>
           <input
             type="text"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
-            style={inputStyle}
+            className="w-full p-3 text-[15px] border border-[#ccc] rounded-xl box-border"
           />
         </div>
 
         {/* Date */}
-        <div style={{ marginBottom: "16px" }}>
-          <label style={labelStyle}>Date</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-semibold text-[15px]">Date</label>
           <input
             type="date"
             value={form.date}
             onChange={(e) => setForm({ ...form, date: e.target.value })}
-            style={inputStyle}
+            className="w-full p-3 text-[15px] border border-[#ccc] rounded-xl box-border"
           />
         </div>
 
         {/* Thumbnail */}
-        <div style={{ marginBottom: "16px" }}>
-          <label style={labelStyle}>Thumbnail Image</label>
+        <div className="mb-4">
+          <label className="block mb-2 font-semibold text-[15px]">Thumbnail Image</label>
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setThumbnail(e.target.files[0] || null)}
-            style={{ fontSize: "15px", fontFamily: "inherit" }}
+            className="text-[15px]"
           />
           {thumbnail && (
-            <p style={{ marginTop: "8px", fontSize: "14px", color: "#666" }}>
-              Selected: {thumbnail.name}
-            </p>
+            <p className="mt-2 text-sm text-[#666]">Selected: {thumbnail.name}</p>
           )}
         </div>
 
-        {/* Substack link — shown for "both" and "substack" */}
+        {/* Substack link */}
         {(postType === "both" || postType === "substack") && (
-          <div style={{ marginBottom: "16px" }}>
-            <label style={labelStyle}>Substack Link</label>
+          <div className="mb-4">
+            <label className="block mb-2 font-semibold text-[15px]">Substack Link</label>
             <input
               type="url"
               value={form.link}
               onChange={(e) => setForm({ ...form, link: e.target.value })}
               placeholder="https://yoursubstack.substack.com/p/..."
-              style={inputStyle}
+              className="w-full p-3 text-[15px] border border-[#ccc] rounded-xl box-border"
             />
           </div>
         )}
 
-        {/* Content — shown for "both" and "site" */}
+        {/* Content */}
         {(postType === "both" || postType === "site") && (
-          <div style={{ marginBottom: "16px" }}>
-            <label style={labelStyle}>Content</label>
+          <div className="mb-4">
+            <label className="block mb-2 font-semibold text-[15px]">Content</label>
             <textarea
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
               rows={12}
               placeholder="Write your article here..."
-              style={{ ...inputStyle, resize: "vertical" }}
+              className="w-full p-3 text-[15px] border border-[#ccc] rounded-xl resize-y box-border"
             />
           </div>
         )}
 
-        {/* Submit */}
         <button
           onClick={handleSubmit}
           disabled={submitting || !form.title}
-          style={{
-            ...buttonStyle,
-            opacity: submitting || !form.title ? 0.6 : 1,
-            cursor: submitting || !form.title ? "not-allowed" : "pointer",
-          }}
+          className="px-6 py-2.5 rounded-full bg-black text-white text-sm font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {submitting ? "Publishing..." : "Publish"}
         </button>
 
-        {status === "success" && (
-          <p style={{ color: "green", fontSize: "15px", marginTop: "16px" }}>
-            Article published successfully!
-          </p>
-        )}
-        {status && status !== "success" && (
-          <p style={{ color: "#b00020", fontSize: "15px", marginTop: "16px" }}>
-            {status}
-          </p>
-        )}
+        {status === "success" && <p className="mt-4 text-green-600">Article published successfully!</p>}
+        {status && status !== "success" && <p className="mt-4 text-red-600">{status}</p>}
       </div>
     </Layout>
   );
