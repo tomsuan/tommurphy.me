@@ -1,5 +1,7 @@
 module.exports = {
   images: {
-    remotePatterns: [],
+    unoptimized: true,
   },
+  trailingSlash: false,
+  reactStrictMode: true,
 };

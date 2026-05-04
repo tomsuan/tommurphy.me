@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script";
 import navigation from "./navigation";
+import Search from "./components/Search";
 
 const DEFAULT_TITLE = "Tom Murphy";
 const DEFAULT_DESCRIPTION = "Notes and thoughts by Tom Murphy on technology, AI, and life.";
@@ -13,7 +14,10 @@ export default function Layout({
   description = DEFAULT_DESCRIPTION,
   pathname = "" 
 }) {
-  const canonical = `${SITE_URL}${pathname}`;
+  // Clean canonical URL (no trailing slash except for homepage)
+  let cleanPath = pathname === '/' ? '' : pathname;
+  if (cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
+  const canonical = `${SITE_URL}${cleanPath}`;
 
   return (
     <div className="brand-container text-center box-border">
@@ -23,18 +27,22 @@ export default function Layout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
 
-        <meta name="robots" content="index, follow" />
+        {/* Canonical */}
         <link rel="canonical" href={canonical} />
 
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonical} />
         <meta property="og:site_name" content="Tom Murphy" />
 
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+
+        <meta name="robots" content="index, follow" />
       </Head>
 
       <Script 
@@ -60,7 +68,9 @@ export default function Layout({
         ))}
       </nav>
 
-      <main className="mt-12 text-left">
+      <Search />
+
+      <main className="mt-4 text-left">
         {children}
       </main>
 
